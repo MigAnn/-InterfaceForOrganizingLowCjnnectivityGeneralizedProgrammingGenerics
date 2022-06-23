@@ -53,4 +53,34 @@ public class TicketManagerTest {
         assertArrayEquals(expected, actual);
 
     }
+
+    @Test
+    public void emptyRepository1() {
+        TicketRepository repository = new TicketRepository();
+        TicketManager manager = new TicketManager(repository);
+
+        manager.add(ticket1);
+
+        repository.removeById(321);
+
+        Ticket[] actual = manager.findAllWithSort("AVA", "DEO");
+        Ticket[] expected = {};
+
+        assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    public void emptyRepository() {
+        TicketRepository repository = new TicketRepository();
+        TicketManager manager = new TicketManager(repository);
+
+
+        Ticket[] actual = manager.findAllWithSort("AVA", "DEO");
+        Ticket[] expected = {};
+
+        assertArrayEquals(expected, actual);
+
+    }
+
 }
